@@ -17,7 +17,6 @@ export default function ProfilePage() {
     await axios.post("http://localhost:4000/api/logout");
     setRedirect("/");
     setUser(null);
-    logout;
   }
 
   if (!ready) {
@@ -43,6 +42,7 @@ export default function ProfilePage() {
         </div>
       )}
       {subpage === "places" && <PlacesPage />}
+         
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Perks from "../Perks.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AccountNav from "../AccountNav";
-import { Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 
 export default function PlacesFormPage() {
   const { id } = useParams();
@@ -42,6 +42,7 @@ export default function PlacesFormPage() {
   function inputDescription(text) {
     return <p className="text-gray-500 text-sm">{text}</p>;
   }
+
   function preInput(header, description) {
     return (
       <>
@@ -67,14 +68,14 @@ export default function PlacesFormPage() {
     };
     if (id) {
       // update
-      await axios.put("/places", {
+      await axios.put("http://localhost:4000/api/places", {
         id,
         ...placeData,
       });
       setRedirect(true);
     } else {
       // new place
-      await axios.post("/places", placeData);
+      await axios.post("http://localhost:4000/api/places", placeData);
       setRedirect(true);
     }
   }
